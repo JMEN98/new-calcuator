@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [calu, setCalu] = useState("");
+  const [result, setResult] = useState("");
+
+  const ops = ["/", "*", "-", "."];
+    
+  const updateCalu = (value) => {
+    setCalu(calu+value)
+  }
+
+
+  const creaeDigits = () => {
+    const digits = [];
+    for (let i = 1; i < 10; i++) {
+      digits.push(<button key={i}>{i}</button>);
+    }
+    return digits;
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="calculator">
+        <div className="display">
+          <span> (0)</span> {calu||"0"}
+        </div>
+        <div className="operators">
+          <button>/</button>
+          <button>*</button>
+          <button>+</button>
+          <button>-</button>
+
+          <button>DEL</button>
+        </div>
+        <div className="digits">
+          {creaeDigits()}
+          <button>0</button>
+          <button>.</button>
+          <button>=</button>
+        </div>
+      </div>
     </div>
   );
 }

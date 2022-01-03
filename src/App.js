@@ -7,7 +7,7 @@ function App() {
   const ops = ["/", "*", "-", "."];
     
   const updateCalu = (value) => {
-    setCalu(calu+value)
+      setCalu(calu+value)
   }
 
 
@@ -22,20 +22,21 @@ function App() {
     <div className="App">
       <div className="calculator">
         <div className="display">
-          <span> (0)</span> {calu||"0"}
+         {result? <span> (0)</span>:''} 
+         {calu||"0"}
         </div>
         <div className="operators">
-          <button>/</button>
-          <button>*</button>
-          <button>+</button>
-          <button>-</button>
+          <button onClick={()=>updateCalu("/")} >/</button>
+          <buttono nClick={()=>updateCalu("*")}> *</buttono>
+          <button onClick={()=>updateCalu("+")}>  +</button>
+          <button onClick={()=>updateCalu("-")}> -</button>
 
           <button>DEL</button>
         </div>
         <div className="digits">
           {creaeDigits()}
-          <button>0</button>
-          <button>.</button>
+          <button onClick={()=>updateCalu("0")}>0</button>
+          <button onClick={()=>updateCalu(".")}>.</button>
           <button>=</button>
         </div>
       </div>

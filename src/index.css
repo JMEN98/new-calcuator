@@ -36,11 +36,12 @@ body{
  background-color:var(--dark) ;
  font-size: 24px;
  font-weight: 300px;
+ color: blue;
 }
 
 .display span{
   font-size: 14px;
-  color:#888;
+  background-color: blue;
 }
 button{
   appearance: none;

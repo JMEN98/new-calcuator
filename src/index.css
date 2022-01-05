@@ -41,7 +41,7 @@ body{
 
 .display span{
   font-size: 14px;
-  background-color: blue;
+  color: blue;
 }
 button{
   appearance: none;

@@ -11,6 +11,10 @@ function App() {
      {return}
 
       setCalu(calu+value)
+      if (!ops.includes(value)){
+        setResult(eval(calu+value).toString())
+
+      }
   }
 
 
@@ -21,11 +25,26 @@ function App() {
     }
     return digits;
   };
+  const calculate =()=>{
+   setCalu(eval(calu).toString())
+
+  }
+
+  const del=()=>{
+    if (calu==''){
+      return
+    }
+      
+    const value = calu.slice(0,-1)
+    setCalu(value)
+
+
+  }
   return (
     <div className="App">
       <div className="calculator">
         <div className="display">
-         {result?<span>(0)</span>:''} 
+         {result?<span>({result})</span>:''} 
          {calu||"0"}
         </div>
         <div className="operators">
@@ -34,13 +53,13 @@ function App() {
           <button onClick={()=>updateCalu("+")}> +</button>
           <button onClick={()=>updateCalu("-")}> -</button>
 
-          <button>DEL</button>
+          <button onClick={del()} >DEL</button>
         </div>
         <div className="digits">
           {creaeDigits()}
           <button onClick={()=>updateCalu("0")}>0</button>
           <button onClick={()=>updateCalu(".")}>.</button>
-          <button>=</button>
+          <button onClick={()=>calculate()}>=</button>
         </div>
       </div>
     </div>

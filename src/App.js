@@ -31,14 +31,22 @@ function App() {
   }
 
   const del=()=>{
+
+    
+
     if (calu==''){
       return
     }
-      
-    const value = calu.slice(0,-1)
+   
+    const value = calu.slice(0, -1)
     setCalu(value)
-
-
+ 
+    if (ops.includes(value.slice(-1))) {
+      setResult(eval(value.toString().slice(0,-1)));  
+    }
+    else{
+      setResult(eval(value.toString()));  
+    }
   }
   return (
     <div className="App">
@@ -53,7 +61,7 @@ function App() {
           <button onClick={()=>updateCalu("+")}> +</button>
           <button onClick={()=>updateCalu("-")}> -</button>
 
-          <button onClick={del()} >DEL</button>
+          <button onClick={del} >DEL</button>
         </div>
         <div className="digits">
           {creaeDigits()}
